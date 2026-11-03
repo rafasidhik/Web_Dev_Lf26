@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A simple TypeScript Employee Directory with search functionality.">
+  <title>Employee Directory</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <p class="eyebrow">TEAM MANAGEMENT</p>
+      <h1>Employee Directory</h1>
+      <p class="subtitle">Find the right people, faster.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="directory" aria-labelledby="directory-title">
+      <div class="section-heading">
+        <div>
+          <h2 id="directory-title">Our Team</h2>
+          <p class="section-description">Browse and search employee details.</p>
+        </div>
+        <span id="employee-count" class="employee-count">0 employees</span>
+      </div>
+
+  <label for="search-input" class="search-label">Search employees</label>
+  <input
+    id="search-input"
+    type="search"
+    placeholder="Search by name, role, department or email..."
+    autocomplete="off"
+  >
+
+  <p id="search-status" class="search-status" aria-live="polite">
+    Loading employees...
+  </p>
+
+  <div id="employee-list" class="employee-grid"></div>
+
+  <p id="empty-state" class="empty-state" hidden>
+    No employees found. Try a different search.
+  </p>
+</section>
+
+  </main>
+
+  <footer class="footer">
+    <p>Built with HTML, CSS and TypeScript.</p>
+  </footer>
+
+  <script type="module" src="./dist/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,259 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  color: #172033;
+  background: #f5f7fb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background: #172554;
+  color: #ffffff;
+  padding: 52px 24px 60px;
+}
+
+.header-content {
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  color: #a5b4fc;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+}
+
+h1 {
+  font-size: clamp(30px, 5vw, 44px);
+  letter-spacing: -1.5px;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  color: #dbeafe;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.container {
+  width: min(1050px, calc(100% - 40px));
+  margin: -24px auto 48px;
+  flex: 1;
+  position: relative;
+}
+
+.directory {
+  background: #ffffff;
+  border: 1px solid #e5eaf3;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 12px 35px rgb(15 23 42 / 5%);
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 26px;
+}
+
+h2 {
+  font-size: 23px;
+  letter-spacing: -0.5px;
+  margin-bottom: 7px;
+}
+
+.section-description {
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.employee-count {
+  background: #eef2ff;
+  color: #4338ca;
+  border-radius: 20px;
+  padding: 9px 13px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.search-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 9px;
+}
+
+#search-input {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid #dbe2ed;
+  border-radius: 10px;
+  padding: 12px 15px;
+  color: #172033;
+  background: #ffffff;
+  font: inherit;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#search-input::placeholder {
+  color: #94a3b8;
+}
+
+#search-input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgb(99 102 241 / 13%);
+}
+
+.search-status {
+  color: #64748b;
+  font-size: 13px;
+  margin: 18px 0;
+}
+
+.employee-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.employee-card {
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid #e5eaf3;
+  border-radius: 12px;
+  background: #ffffff;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.employee-card:hover {
+  border-color: #c7d2fe;
+  box-shadow: 0 8px 22px rgb(15 23 42 / 5%);
+  transform: translateY(-2px);
+}
+
+.employee-top {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 17px;
+}
+
+.avatar {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #eef2ff;
+  color: #4338ca;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.employee-name {
+  font-size: 16px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+  margin-bottom: 5px;
+}
+
+.employee-role {
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.department {
+  display: inline-block;
+  background: #f1f5f9;
+  color: #475569;
+  border-radius: 6px;
+  padding: 6px 9px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.employee-email {
+  display: block;
+  color: #4f46e5;
+  font-size: 13px;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.employee-email:hover {
+  text-decoration: underline;
+}
+
+.search-status:empty {
+  display: none;
+}
+
+.empty-state {
+  color: #64748b;
+  text-align: center;
+  padding: 40px 12px;
+  font-size: 14px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.footer {
+  padding: 24px 20px;
+  text-align: center;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.9;
+  border-top: 1px solid #e5eaf3;
+  background: #ffffff;
+}
+
+@media (max-width: 650px) {
+  .header {
+    padding: 40px 20px 52px;
+  }
+
+  .container {
+    width: calc(100% - 24px);
+    margin-top: -20px;
+  }
+
+  .directory {
+    padding: 21px 16px;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .employee-grid {
+    grid-template-columns: 1fr;
+  }
+}
