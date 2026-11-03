@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Weather Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div>
+                    <p class="eyebrow">LIVE WEATHER</p>
+                    <h1>Weather Dashboard</h1>
+                    <p class="subtitle">
+                        Check current weather conditions and the 5-day forecast for any city.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <main class="container">
+
+        <!-- Search Section -->
+        <section class="search-section" aria-labelledby="search-title">
+
+            <h2 id="search-title">Search for a City</h2>
+
+            <form id="weatherForm" class="search-form">
+
+                <div class="input-group">
+                    <label for="cityInput">City name</label>
+
+                    <input
+                        type="text"
+                        id="cityInput"
+                        name="city"
+                        placeholder="e.g. Kochi"
+                        autocomplete="off"
+                        required
+                    >
+                </div>
+
+                <button type="submit" id="searchButton">
+                    Search Weather
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- Status Messages -->
+        <div
+            id="loadingMessage"
+            class="status-message loading"
+            role="status"
+            aria-live="polite"
+            hidden
+        >
+            <span class="loader" aria-hidden="true"></span>
+            <span>Fetching weather data...</span>
+        </div>
+
+        <div
+            id="errorMessage"
+            class="status-message error"
+            role="alert"
+            hidden
+        >
+            <strong>Unable to get weather data.</strong>
+            <span id="errorText">
+                Please check the city name and try again.
+            </span>
+        </div>
+
+
+        <!-- Weather Dashboard -->
+        <section
+            id="weatherDashboard"
+            class="weather-dashboard"
+            aria-label="Weather information"
+            hidden
+        >
+
+            <!-- Current Weather -->
+            <section class="current-weather" aria-labelledby="currentWeatherTitle">
+
+                <div class="current-weather-header">
+                    <div>
+                        <p class="eyebrow">CURRENT WEATHER</p>
+
+                        <h2 id="currentWeatherTitle">
+                            Weather
+                        </h2>
+
+                        <p id="weatherDate" class="weather-date">
+                            --
+                        </p>
+                    </div>
+
+                    <div id="weatherIcon" class="weather-icon" aria-hidden="true">
+                        ☀️
+                    </div>
+                </div>
+
+
+                <div class="current-weather-main">
+
+                    <div class="temperature">
+                        <span id="temperature">--</span>
+                        <span class="temperature-unit">°C</span>
+                    </div>
+
+                    <div class="condition">
+                        <h3 id="weatherCondition">
+                            --
+                        </h3>
+
+                        <p id="feelsLike">
+                            Feels like --°C
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- Weather Details -->
+                <div class="weather-details">
+
+                    <article class="detail-card">
+                        <span class="detail-label">Humidity</span>
+                        <strong id="humidity">--%</strong>
+                    </article>
+
+                    <article class="detail-card">
+                        <span class="detail-label">Wind Speed</span>
+                        <strong id="windSpeed">-- km/h</strong>
+                    </article>
+
+                    <article class="detail-card">
+                        <span class="detail-label">Rain</span>
+                        <strong id="rainChance">--%</strong>
+                    </article>
+
+                    <article class="detail-card">
+                        <span class="detail-label">Weather Code</span>
+                        <strong id="weatherCode">--</strong>
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- 5-Day Forecast -->
+            <section class="forecast-section" aria-labelledby="forecastTitle">
+
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">UPCOMING WEATHER</p>
+
+                        <h2 id="forecastTitle">
+                            5-Day Forecast
+                        </h2>
+                    </div>
+                </div>
+
+
+                <div
+                    id="forecastContainer"
+                    class="forecast-grid"
+                >
+                    <!-- Forecast cards are added using JavaScript -->
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <p>
+                Weather Dashboard &copy; 2026
+            </p>
+
+            <p>
+                μID: <strong>rafasidhik@mulearn</strong>
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
