@@ -1,4 +1,4 @@
-const SUPPORTED_IMAGE_EXTENSIONS = new Set([
+export const SUPPORTED_IMAGE_EXTENSIONS: ReadonlySet<string> = new Set([
   "jpg",
   "jpeg",
   "jfif",
@@ -11,7 +11,7 @@ const SUPPORTED_IMAGE_EXTENSIONS = new Set([
   "ico",
 ]);
 
-const UNSUPPORTED_IMAGE_EXTENSIONS = new Set([
+const UNSUPPORTED_IMAGE_EXTENSIONS: ReadonlySet<string> = new Set([
   "tiff",
   "tif",
   "psd",
@@ -23,6 +23,17 @@ const UNSUPPORTED_IMAGE_EXTENSIONS = new Set([
   "dng",
   "raf",
   "orf",
+]);
+
+const SUPPORTED_MIME_TYPES: ReadonlySet<string> = new Set([
+  "image/jpeg",
+  "image/png",
+  "image/webp",
+  "image/gif",
+  "image/svg+xml",
+  "image/avif",
+  "image/bmp",
+  "image/x-icon",
 ]);
 
 /**
@@ -50,16 +61,7 @@ export function isSupportedImageFile(file: File): boolean {
   // If the browser assigned a known supported image MIME type
   if (file.type) {
     const mime = file.type.toLowerCase();
-    if (
-      mime === "image/jpeg" ||
-      mime === "image/png" ||
-      mime === "image/webp" ||
-      mime === "image/gif" ||
-      mime === "image/svg+xml" ||
-      mime === "image/avif" ||
-      mime === "image/bmp" ||
-      mime === "image/x-icon"
-    ) {
+    if (SUPPORTED_MIME_TYPES.has(mime)) {
       return true;
     }
 

@@ -16,4 +16,3 @@ export function formatFileSize(bytes: number): string {
 
   return `${size.toFixed(unitIndex === 0 ? 1 : 2)} ${units[unitIndex]}`;
 }
-

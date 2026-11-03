@@ -1,0 +1,10 @@
+dist
+dist-ssr
+build
+node_modules
+coverage
+package-lock.json
+*.log
+.vite
+.cache
+

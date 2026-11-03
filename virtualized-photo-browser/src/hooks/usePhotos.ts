@@ -1,49 +1,51 @@
 import { useCallback, useRef, useState } from "react";
-import type { FolderStatus, Photo } from "../types/photo";
+import type { FolderSelectHandler, FolderStatus, Photo } from "../types/photo";
 import { isSupportedImageFile } from "../utils/fileDetection";
 
-export function usePhotos() {
+export interface UsePhotosResult {
+  readonly photos: readonly Photo[];
+  readonly isLoading: boolean;
+  readonly status: FolderStatus;
+  readonly selectFolder: FolderSelectHandler;
+}
+
+const INITIAL_STATUS: FolderStatus = {
+  totalFiles: 0,
+  imageCount: 0,
+  skippedCount: 0,
+  hasLoaded: false,
+};
+
+const EMPTY_FOLDER_STATUS: FolderStatus = {
+  totalFiles: 0,
+  imageCount: 0,
+  skippedCount: 0,
+  hasLoaded: true,
+};
+
+/**
+ * Hook to asynchronously read, filter, and index local image files from a selected directory.
+ */
+export function usePhotos(): UsePhotosResult {
   const [photos, setPhotos] = useState<Photo[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [status, setStatus] = useState<FolderStatus>({
-    totalFiles: 0,
-    imageCount: 0,
-    skippedCount: 0,
-    hasLoaded: false,
-  });
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [status, setStatus] = useState<FolderStatus>(INITIAL_STATUS);
 
-  const activeProcessIdRef = useRef(0);
+  const activeProcessIdRef = useRef<number>(0);
 
-  const selectFolder = useCallback((inputFiles: File[] | FileList | null) => {
+  const selectFolder: FolderSelectHandler = useCallback((inputFiles) => {
     const processId = ++activeProcessIdRef.current;
 
     if (!inputFiles || inputFiles.length === 0) {
       setPhotos([]);
       setIsLoading(false);
-      setStatus({
-        totalFiles: 0,
-        imageCount: 0,
-        skippedCount: 0,
-        hasLoaded: true,
-      });
+      setStatus(EMPTY_FOLDER_STATUS);
       return;
     }
 
     // Immediately copy files synchronously to a static array before any asynchronous delay
     const fileArray = Array.from(inputFiles);
     const totalFiles = fileArray.length;
-
-    if (totalFiles === 0) {
-      setPhotos([]);
-      setIsLoading(false);
-      setStatus({
-        totalFiles: 0,
-        imageCount: 0,
-        skippedCount: 0,
-        hasLoaded: true,
-      });
-      return;
-    }
 
     setIsLoading(true);
 

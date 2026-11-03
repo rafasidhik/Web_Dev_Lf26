@@ -1,19 +1,20 @@
-import { useRef } from "react";
+import type { FolderSelectHandler } from "../types/photo";
 
 interface FolderPickerProps {
-  onFolderSelect: (files: File[] | FileList | null) => void;
-  isLoading: boolean;
+  readonly onFolderSelect: FolderSelectHandler;
+  readonly isLoading: boolean;
 }
 
-function FolderPicker({ onFolderSelect, isLoading }: FolderPickerProps) {
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  const handleClick = (event: React.MouseEvent<HTMLInputElement>) => {
+/**
+ * Accessible button and file input supporting local directory picking via webkitdirectory.
+ */
+export function FolderPicker({ onFolderSelect, isLoading }: FolderPickerProps) {
+  const handleClick = (event: React.MouseEvent<HTMLInputElement>): void => {
     // Reset value on click so choosing the exact same folder again still triggers onChange
     event.currentTarget.value = "";
   };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const fileList = event.target.files;
     if (fileList && fileList.length > 0) {
       // Immediately snapshot files to a plain JS array so browser DOM resets cannot clear them
@@ -27,7 +28,6 @@ function FolderPicker({ onFolderSelect, isLoading }: FolderPickerProps) {
   return (
     <div className="folder-picker">
       <input
-        ref={inputRef}
         type="file"
         // @ts-expect-error: webkitdirectory is a non-standard browser directory picker attribute
         webkitdirectory=""

@@ -1,18 +1,18 @@
 import { memo, useState } from "react";
-import type { Photo } from "../types/photo";
-import { useObjectUrl } from "../hooks/useObjectUrl";
+import type { Photo } from "../../types/photo";
+import { useObjectUrl } from "../../hooks/useObjectUrl";
 
 interface PhotoCardProps {
-  photo: Photo;
-  index: number;
-  onSelect: (index: number) => void;
+  readonly photo: Photo;
+  readonly index: number;
+  readonly onSelect: (index: number) => void;
 }
 
-export const PhotoCard = memo(function PhotoCard({
-  photo,
-  index,
-  onSelect,
-}: PhotoCardProps) {
+/**
+ * Individual photo card item rendered inside the virtualized grid row.
+ * Acquires a lazy object URL while mounted and releases it on unmount.
+ */
+export const PhotoCard = memo(function PhotoCard({ photo, index, onSelect }: PhotoCardProps) {
   const url = useObjectUrl(photo.file);
   const [hasError, setHasError] = useState(false);
 
@@ -26,7 +26,9 @@ export const PhotoCard = memo(function PhotoCard({
     >
       {hasError ? (
         <div className="photo-card-error" role="img" aria-label="Image preview unavailable">
-          <span className="photo-card-error-icon" aria-hidden="true">⚠</span>
+          <span className="photo-card-error-icon" aria-hidden="true">
+            ⚠
+          </span>
           <span className="photo-card-error-text">Preview unavailable</span>
         </div>
       ) : url ? (
