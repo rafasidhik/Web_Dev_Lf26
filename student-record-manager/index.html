@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Record Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <p class="eyebrow">ACADEMIC RECORDS</p>
+            <h1>Student Record Manager</h1>
+            <p class="subtitle">
+                Search, filter and sort student records with live performance statistics.
+            </p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Statistics -->
+        <section class="stats-grid" aria-label="Student statistics">
+
+            <article class="stat-card">
+                <p>Total Students</p>
+                <h2 id="totalStudents">0</h2>
+            </article>
+
+            <article class="stat-card">
+                <p>Average Marks</p>
+                <h2 id="averageMarks">0</h2>
+            </article>
+
+            <article class="stat-card">
+                <p>Top Performer</p>
+                <h2 id="topper">—</h2>
+            </article>
+
+        </section>
+
+        <!-- Search and Filters -->
+        <section class="controls-section" aria-labelledby="controls-title">
+
+            <h2 id="controls-title">Find Students</h2>
+
+            <div class="controls">
+
+                <div class="control-group">
+                    <label for="searchInput">Search by name</label>
+                    <input
+                        type="search"
+                        id="searchInput"
+                        placeholder="Enter student name..."
+                    >
+                </div>
+
+                <div class="control-group">
+                    <label for="courseFilter">Course</label>
+                    <select id="courseFilter">
+                        <option value="all">All Courses</option>
+                        <option value="CSE">Computer Science</option>
+                        <option value="ECE">Electronics</option>
+                        <option value="EEE">Electrical</option>
+                        <option value="ME">Mechanical</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="marksFilter">Minimum Marks</label>
+                    <select id="marksFilter">
+                        <option value="all">All Marks</option>
+                        <option value="90">90 and above</option>
+                        <option value="80">80 and above</option>
+                        <option value="70">70 and above</option>
+                        <option value="60">60 and above</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="sortSelect">Sort by</label>
+                    <select id="sortSelect">
+                        <option value="default">Default Order</option>
+                        <option value="name-asc">Name: A - Z</option>
+                        <option value="name-desc">Name: Z - A</option>
+                        <option value="marks-desc">Marks: High - Low</option>
+                        <option value="marks-asc">Marks: Low - High</option>
+                    </select>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Student Records -->
+        <section class="records-section" aria-labelledby="records-title">
+
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">RECORDS</p>
+                    <h2 id="records-title">Student List</h2>
+                </div>
+
+                <p id="resultCount">0 students</p>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Course</th>
+                            <th scope="col">Marks</th>
+                            <th scope="col">Performance</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="studentTableBody">
+                        <!-- Student rows are added using JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="emptyState" class="empty-state" hidden>
+                <h3>No students found</h3>
+                <p>Try changing your search or filter options.</p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Student Record Manager &copy; 2026</p>
+            <p>μID: <strong>rafasidhik@mulearn</strong></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
