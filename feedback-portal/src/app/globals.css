@@ -1,0 +1,336 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap");
+
+:root {
+  --background: #f7f7f5;
+  --foreground: #20211f;
+  --surface: #ffffff;
+  --accent: #6c63ff;
+  --accent-hover: #5950e8;
+  --muted: #737373;
+  --border: #e8e8e5;
+  --danger: #dc2626;
+  --danger-hover: #b91c1c;
+  --danger-light: #fef2f2;
+  --danger-border: #fecaca;
+  --success: #16a34a;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "DM Sans", sans-serif;
+  min-height: 100vh;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.container {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 60px 24px;
+}
+
+.container h1 {
+  font-family: "Outfit", sans-serif;
+  font-size: 38px;
+  font-weight: 600;
+  letter-spacing: -1.5px;
+  margin-bottom: 8px;
+}
+
+.container > p {
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+
+form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+form label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+form input,
+form textarea,
+form select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--foreground);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+form textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15);
+}
+
+form button {
+  margin-top: 10px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+form button:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+form button:focus-visible,
+.feedback-actions button:focus-visible {
+  outline: 3px solid rgba(108, 99, 255, 0.35);
+  outline-offset: 2px;
+}
+
+button:disabled,
+input:disabled,
+textarea:disabled,
+select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.status-message {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #f4f3ff;
+  border: 1px solid #e0deff;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.action-status {
+  margin-bottom: 18px;
+}
+
+.feedback-section {
+  margin-top: 48px;
+}
+
+.feedback-section h2 {
+  font-family: "Outfit", sans-serif;
+  font-size: 24px;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+
+.loading-state,
+.empty-state {
+  color: var(--muted);
+  font-size: 15px;
+  padding: 24px 0;
+  text-align: center;
+}
+
+.feedback-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.02);
+  transition: border-color 0.2s ease;
+}
+
+.feedback-card:hover {
+  border-color: #d8d8d3;
+}
+
+.feedback-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.feedback-card h3 {
+  font-size: 17px;
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.category-badge {
+  display: inline-block;
+  background: #f0efff;
+  color: var(--accent);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.feedback-message {
+  color: #383836;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  word-break: break-word;
+}
+
+.feedback-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.rating-text {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.feedback-actions {
+  display: flex;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.feedback-actions button {
+  padding: 7px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-edit {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+.btn-edit:hover:not(:disabled) {
+  background: var(--accent);
+  color: white;
+}
+
+.btn-delete {
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid var(--danger-border);
+}
+
+.btn-delete:hover:not(:disabled) {
+  background: var(--danger);
+  color: white;
+  border-color: var(--danger);
+}
+
+.edit-form {
+  margin-top: 18px;
+  padding: 20px;
+  background: #fafaf8;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.edit-form h4 {
+  font-family: "Outfit", sans-serif;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.edit-form-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.btn-save {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-save:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.btn-cancel {
+  padding: 10px 18px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-cancel:hover:not(:disabled) {
+  background: #f0f0ee;
+  color: var(--foreground);
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 40px 16px;
+  }
+
+  .container h1 {
+    font-size: 30px;
+  }
+
+  form {
+    padding: 20px 16px;
+  }
+
+  .feedback-card {
+    padding: 18px 16px;
+  }
+
+  .edit-form-buttons {
+    flex-direction: column;
+  }
+}
