@@ -1,6 +1,10 @@
-# Git Collaboration Challenge
+# Task 05: Git Collaboration Challenge
 
-This repository was created for the μLearn Foundation LF 2026 Git Collaboration Challenge.
+A collaborative Git workflow practice project for the µLearn Web Development Challenge.
+
+## Overview
+
+A project practicing standard Git and GitHub workflow fundamentals: setting up a repository, creating feature branches, writing meaningful commits, and managing pull requests to simulate real-world team collaboration.
 
 ## What I Practiced
 
